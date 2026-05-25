@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notary Fee Calculator · Singapore</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="bg-lines" aria-hidden="true"></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-mark">NP</div>
+      <div class="header-text">
+        <h1>Notary Fee Calculator</h1>
+        <p class="subtitle">Singapore · Fees prescribed under Notaries Public Rules (Cap. 208, R1)</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="calculator-grid">
+
+      <!-- LEFT: INPUTS -->
+      <section class="panel inputs-panel">
+        <h2 class="panel-title">Your Requirements</h2>
+
+        <!-- Service Type -->
+        <div class="field-group">
+          <label class="field-label">Service Type</label>
+          <div class="radio-group" id="serviceType">
+            <label class="radio-card active">
+              <input type="radio" name="service" value="witnessing" checked />
+              <span class="radio-title">Witnessing / Execution</span>
+              <span class="radio-desc">Signing of documents before a Notary</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="service" value="ctc" />
+              <span class="radio-title">Certified True Copy</span>
+              <span class="radio-desc">Certified copies of original documents</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- WITNESSING OPTIONS -->
+        <div id="witnessingOptions">
+          <div class="field-group">
+            <label class="field-label">Signatory Type</label>
+            <div class="radio-group" id="signatoryType">
+              <label class="radio-card active">
+                <input type="radio" name="signatory" value="individual" checked />
+                <span class="radio-title">Individual(s)</span>
+                <span class="radio-desc">One or more natural persons</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="signatory" value="company" />
+                <span class="radio-title">Company</span>
+                <span class="radio-desc">Corporate execution</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group" id="additionalSignersGroup">
+            <label class="field-label">Number of Signatories</label>
+            <div class="stepper">
+              <button class="stepper-btn" id="signersMinus" aria-label="Decrease">−</button>
+              <span class="stepper-val" id="signersCount">1</span>
+              <button class="stepper-btn" id="signersPlus" aria-label="Increase">+</button>
+            </div>
+            <p class="field-hint">1st person: $40 &nbsp;·&nbsp; 2nd person: +$20 &nbsp;·&nbsp; Each additional: +$10</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Exhibits Attached</label>
+            <div class="stepper">
+              <button class="stepper-btn" id="exhibitsMinus" aria-label="Decrease">−</button>
+              <span class="stepper-val" id="exhibitsCount">0</span>
+              <button class="stepper-btn" id="exhibitsPlus" aria-label="Increase">+</button>
+            </div>
+            <p class="field-hint">$10 per exhibit marked or attached</p>
+          </div>
+        </div>
+
+        <!-- CTC OPTIONS -->
+        <div id="ctcOptions" class="hidden">
+          <div class="field-group">
+            <label class="field-label">Seal Required?</label>
+            <div class="radio-group">
+              <label class="radio-card active">
+                <input type="radio" name="sealRequired" value="yes" checked />
+                <span class="radio-title">Yes — Seal Required</span>
+                <span class="radio-desc">$10 first page · $2 per subsequent page</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="sealRequired" value="no" />
+                <span class="radio-title">No — Seal Not Required</span>
+                <span class="radio-desc">$5 first page · $1 per subsequent page</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Number of Pages</label>
+            <div class="stepper">
+              <button class="stepper-btn" id="pagesMinus" aria-label="Decrease">−</button>
+              <span class="stepper-val" id="pagesCount">1</span>
+              <button class="stepper-btn" id="pagesPlus" aria-label="Increase">+</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALWAYS SHOWN -->
+        <div class="field-group">
+          <label class="field-label">Number of Documents</label>
+          <div class="stepper">
+            <button class="stepper-btn" id="docsMinus" aria-label="Decrease">−</button>
+            <span class="stepper-val" id="docsCount">1</span>
+            <button class="stepper-btn" id="docsPlus" aria-label="Increase">+</button>
+          </div>
+          <p class="field-hint">Each document requires its own Notarial Certificate + SAL Apostille</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Additional Parties on Same Notarial Certificate</label>
+          <div class="stepper">
+            <button class="stepper-btn" id="ncPartiesMinus" aria-label="Decrease">−</button>
+            <span class="stepper-val" id="ncPartiesCount">0</span>
+            <button class="stepper-btn" id="ncPartiesPlus" aria-label="Increase">+</button>
+          </div>
+          <p class="field-hint">+$20 per additional party on the Notarial Certificate</p>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Special Notarial Certificate Required?</label>
+          <div class="toggle-row">
+            <label class="toggle">
+              <input type="checkbox" id="specialNC" />
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label">+$75 per special certificate</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT: BREAKDOWN -->
+      <section class="panel breakdown-panel">
+        <h2 class="panel-title">Fee Breakdown</h2>
+        <div class="breakdown-list" id="breakdownList">
+          <!-- populated by JS -->
+        </div>
+        <div class="total-row">
+          <span class="total-label">Estimated Total</span>
+          <span class="total-amount" id="totalAmount">$0.00</span>
+        </div>
+        <p class="disclaimer">
+          Statutory fees per Schedule 1, Notaries Public Rules (Cap. 208, R1). SAL Apostille $87.20 incl. GST — mandatory per SAL policy since 16 Sep 2021. Notary's own fees exclude GST if practice is below GST registration threshold. Additional charges may apply for travel, translation, or special circumstances.
+        </p>
+        <button class="reset-btn" id="resetBtn">Reset Calculator</button>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="calculator.js"></script>
+</body>
+</html>
