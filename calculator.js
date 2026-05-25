@@ -165,10 +165,10 @@ function calculate() {
     add(`Additional NC parties × ${state.ncParties} × ${docs}`, ncPFee);
   }
 
-  // Special NC
+  // Prepared NC
   if (state.specialNC) {
     const snFee = FEES.special_nc * docs;
-    add(`Special Notarial Certificate × ${docs}`, snFee);
+    add(`Notarial Certificate (prepared) × ${docs}`, snFee);
   }
 
   // SAL Apostille — mandatory

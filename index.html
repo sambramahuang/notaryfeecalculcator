@@ -134,13 +134,13 @@
         </div>
 
         <div class="field-group">
-          <label class="field-label">Special Notarial Certificate Required?</label>
+          <label class="field-label">Notarial Certificate Required?</label>
           <div class="toggle-row">
             <label class="toggle">
               <input type="checkbox" id="specialNC" />
               <span class="toggle-slider"></span>
             </label>
-            <span class="toggle-label">+$75 per special certificate</span>
+            <span class="toggle-label">+$75 per certificate</span>
           </div>
         </div>
 
@@ -166,5 +166,47 @@
   </main>
 
   <script src="calculator.js"></script>
+
+  <!-- CHAT WIDGET -->
+  <button class="chat-trigger" id="chatTrigger" aria-label="Open fee assistant">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M17.5 10c0 4.142-3.358 7.5-7.5 7.5a7.47 7.47 0 01-3.75-1.004L2.5 17.5l1.004-3.75A7.47 7.47 0 012.5 10C2.5 5.858 5.858 2.5 10 2.5S17.5 5.858 17.5 10z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span>Ask a question</span>
+  </button>
+
+  <div class="chat-panel" id="chatPanel" aria-hidden="true">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-logo-mark">NP</div>
+        <div>
+          <div class="chat-title">Fee Assistant</div>
+          <div class="chat-subtitle">Notaries Public Rules (Cap. 208, R1)</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-welcome">
+        Ask me anything about Singapore notary fees — I can calculate costs for your specific situation.
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input
+        type="text"
+        class="chat-input"
+        id="chatInput"
+        placeholder="e.g. 2 documents, 3 signatories each…"
+        autocomplete="off"
+      />
+      <button class="chat-send" id="chatSend" aria-label="Send">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M14 8L2 2l2.5 6L2 14l12-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="chat-widget.js"></script>
 </body>
 </html>
